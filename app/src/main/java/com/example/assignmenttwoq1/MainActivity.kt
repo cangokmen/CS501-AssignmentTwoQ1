@@ -3,7 +3,6 @@ package com.example.assignmenttwoq1
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,20 +24,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.assignmenttwoq1.ui.theme.AssignmentTwoQ1Theme
 
+// MainActivity is the app's entry point and sets up the initial UI.
 class MainActivity : ComponentActivity() {
+    // onCreate defines the activity's layout when it's first created.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // setContent defines the UI using Jetpack Compose.
         setContent {
             AssignmentTwoQ1Theme {
+                // A Surface container using the background color from the theme.
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    // A Column to arrange items vertically, centered on the screen.
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -47,6 +49,7 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
+                        // First card with a light gray background applied via the modifier.
                         ColorCard(
                             color = Color.Red,
                             label = "Card 1",
@@ -56,8 +59,10 @@ class MainActivity : ComponentActivity() {
                                 .padding(bottom = 10.dp)
                         )
 
+                        // Spacer for vertical separation between cards.
                         Spacer(modifier = Modifier.height(25.dp))
 
+                        // Second card with a black border.
                         ColorCard(
                             color = Color.Green,
                             label = "Card 2",
@@ -69,6 +74,7 @@ class MainActivity : ComponentActivity() {
 
                         Spacer(modifier = Modifier.height(24.dp))
 
+                        // Third card with padding on all sides.
                         ColorCard(
                             color = Color.Blue,
                             label = "Card 3",
@@ -83,16 +89,25 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * A reusable Composable for displaying a card with a specific color and label.
+ *
+ * @param color The background color of the card.
+ * @param label The text to display inside the card.
+ * @param modifier The Modifier to be applied to this card.
+ */
 @Composable
 fun ColorCard(
     color: Color,
     label: String,
     modifier: Modifier = Modifier
 ) {
+    // A Material Design container with rounded corners.
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(30.dp)
     ) {
+        // Box is used to center the Text within the Card.
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -110,6 +125,3 @@ fun ColorCard(
         }
     }
 }
-
-
-
